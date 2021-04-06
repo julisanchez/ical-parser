@@ -13,8 +13,11 @@ class ICal {
 
     loop:
     for(var line in lines) {
-
-      if(line.contains(':')) {
+      if (line.startsWith(RegExp(r'\s'))) {
+        // add to multiple-line
+        line = line.substring(1);
+        if(key != null) currentMap[key] += line;
+      } else if(line.contains(':')) {
         var temp = line.split(':');
 
         key = temp[0].trim();
@@ -48,10 +51,6 @@ class ICal {
           currentMap[key] = value;
         }
       } else {
-        // add to multiple-line
-        if(line.startsWith(RegExp(r'\s'))){
-          line = line.substring(1);
-        }
         if(key != null) currentMap[key] += line;
       }
     }
