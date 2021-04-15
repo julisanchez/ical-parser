@@ -34,7 +34,7 @@ UID:test@example.com
 DTSTART;VALUE=DATE:20190306
 CLASS:PRIVATE
 DESCRIPTION:Arman and Adrian released their SRT-file parser library for Dar
- t
+ t. This line may include a ":".
 DTSTAMP;X-VOBJ-FLOATINGTIME-ALLOWED=TRUE:20190306T000000
 LOCATION:Heilbronn
 PRIORITY:0
@@ -52,7 +52,7 @@ END:VCALENDAR
       expect(json['X-WR-CALNAME;VALUE=TEXT'], 'Go');
       expect(json['VEVENT'] is List, true);
       expect(json['VEVENT'][0]['DESCRIPTION'],
-          'Arman and Adrian released their SRT-file parser library for Dart');
+          'Arman and Adrian released their SRT-file parser library for Dart. This line may include a ":".');
     });
 
     test('Several VEVENT', () {
