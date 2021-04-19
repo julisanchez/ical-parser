@@ -1,6 +1,6 @@
 name: ical_parser
 description: A parser for ICalendar files (.ics)
-# version: 1.0.0
+version: 1.0.1
 # homepage: https://www.example.com
 
 environment:
