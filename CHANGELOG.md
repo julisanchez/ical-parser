@@ -6,3 +6,6 @@
 
 - Fixed parsing of folded lines containing a ":"
 
+## 1.1.0
+
+- Null-Safety support

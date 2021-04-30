@@ -9,7 +9,7 @@ class ICal {
 
     var lines = calData.split('\n');
 
-    String key;
+    String? key;
 
     loop:
     for(var line in lines) {
