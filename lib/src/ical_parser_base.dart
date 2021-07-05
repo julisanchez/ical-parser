@@ -37,15 +37,13 @@ class ICal {
           list.add(<String, dynamic>{});
 
           // Set new current position
+          currentPath.add(currentMap);
           currentMap = list.last;
-          currentPath.add(value);
 
         } else if(key == 'END') {
           if(value == 'VCALENDAR') return cal;
 
-          // cd ./
-          currentPath.removeLast();
-          currentMap = _processPath(cal, currentPath);
+          currentMap = currentPath.removeLast();
 
         } else{
           currentMap[key] = value;
@@ -58,12 +56,4 @@ class ICal {
     return cal;
   }
 
-  static Map<String, dynamic> _processPath(Map<String, dynamic> map, Queue path) {
-
-    for (var p in path) {
-      map = map[p];
-    }
-
-    return map;
-  }
 }
