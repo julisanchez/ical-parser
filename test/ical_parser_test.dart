@@ -99,6 +99,43 @@ END:VCALENDAR
       expect(json['VEVENT'][1]['UID'], '21B97459-D97B-4B23-AF2A-E2759745C299');
     });
 
+    test('3-level with VALARM', () {
+      var calendar = '''
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+BEGIN:VTODO
+UID:fc5f888a-f03f-47fa-a8a4-72bfb8e17a64
+DTSTAMP:20180223T164650Z
+CREATED:20180223T164650Z
+LAST-MODIFIED:20180223T164650Z
+DTSTART;TZID=Europe/Zurich:20150921T210000
+SUMMARY:summary
+SEQUENCE:0
+STATUS:COMPLETED
+CLASS:PUBLIC
+COMPLETED:20180223T164650Z
+ATTENDEE;PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPANT;CUTYPE=INDIVIDUAL;RSVP=
+ TRUE:mailto:lskdjflfds@sldfj.ch
+ORGANIZER;CN=John Doe:mailto:doe@test.com
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:+PT1M
+DESCRIPTION:description of this todo
+DURATION:PT5S
+REPEAT:0
+END:VALARM
+END:VTODO
+END:VCALENDAR
+''';
+
+      var json = ICal.toJson(calendar);
+
+      expect(json['VTODO'] is List, true);
+      expect((json['VTODO'] as List).length, 1);
+      expect(json['VTODO'][0]['DTSTART;TZID=Europe/Zurich'], '20150921T210000');
+    });
+
     test('Very Long attachment', () async {
       final file = new File('test/verylong.ical');
       var calendar = await file.readAsString();
