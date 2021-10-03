@@ -18,10 +18,11 @@ class ICal {
         line = line.substring(1);
         if(key != null) currentMap[key] += line;
       } else if(line.contains(':')) {
-        var temp = line.split(':');
+        var separator_pos = line.indexOf(':');
 
-        key = temp[0].trim();
-        var value = temp[1].trim();
+        key = line.substring(0, separator_pos).trim();
+        var value = line.substring(separator_pos)
+            .replaceFirst(':', '').trim();
 
         if(key == 'BEGIN') {
           // Skip
