@@ -1,5 +1,6 @@
 import 'package:ical_parser/ical_parser.dart';
 import 'package:test/test.dart';
+import 'dart:io';
 
 void main() {
   group('.toJson()', () {
@@ -96,6 +97,21 @@ END:VCALENDAR
       expect(
           json['VEVENT'][0]['DTEND;TZID=America/Toronto'], '20170515T110000');
       expect(json['VEVENT'][1]['UID'], '21B97459-D97B-4B23-AF2A-E2759745C299');
+    });
+
+    test('Very Long attachment', () async {
+      final file = new File('test/verylong.ical');
+      var calendar = await file.readAsString();
+      var json = ICal.toJson(calendar);
+      expect(json['VEVENT'] is List, true);
+      expect((json['VEVENT'] as List).length, 1);
+      expect(json['VEVENT'][0]['UID'],
+          'FC6B162CBC756D4E2A6B721FAB76E46F-EE2A0FE17AA33F02');
+      expect(
+          json['VEVENT'][0][
+                  'ATTACH;VALUE=BINARY;ENCODING=BASE64;FMTTYPE=image/jpeg;X-LABEL=20161203_194341.jpg']
+              .length,
+          3380152);
     });
   });
 }
