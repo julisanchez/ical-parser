@@ -22,7 +22,7 @@ class ICal {
 
         key = line.substring(0, separator_pos).trim();
         var value = line.substring(separator_pos)
-            .replaceFirst(':', '').trim();
+           .replaceFirst(':', '').trim();
 
         if(key == 'BEGIN') {
           // Skip
