@@ -40,7 +40,7 @@ LOCATION:Heilbronn
 PRIORITY:0
 RRULE:FREQ=YEARLY
 STATUS:CONFIRMED
-SUMMARY:SRT-file Parser Release
+SUMMARY:SRT-file Parser Release (this line too can include a ":")
 URL:https://pub.dartlang.org/packages/srt_parser
 END:VEVENT
 END:VCALENDAR
@@ -53,6 +53,8 @@ END:VCALENDAR
       expect(json['VEVENT'] is List, true);
       expect(json['VEVENT'][0]['DESCRIPTION'],
           'Arman and Adrian released their SRT-file parser library for Dart. This line may include a ":".');
+      expect(json['VEVENT'][0]['SUMMARY'],
+          'SRT-file Parser Release (this line too can include a ":")');
     });
 
     test('Several VEVENT', () {
