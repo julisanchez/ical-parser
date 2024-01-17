@@ -150,7 +150,7 @@ END:VCALENDAR
           json['VEVENT'][0][
                   'ATTACH;VALUE=BINARY;ENCODING=BASE64;FMTTYPE=image/jpeg;X-LABEL=20161203_194341.jpg']
               .length,
-          3380152);
+          3379486);
     });
   });
 }
