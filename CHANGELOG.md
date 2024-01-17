@@ -1,6 +1,6 @@
 ## 1.0.0
 
-- Initial version, created by Julian Sanche
+- Initial version, created by Julian Sanchez
 
 ## 1.0.1
 
